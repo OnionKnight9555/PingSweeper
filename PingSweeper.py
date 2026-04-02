@@ -2,7 +2,7 @@ import subprocess
 
 def ping(ip):
     result = subprocess.run(
-        ["ping", "-c", "1", "-W", "1", ip],
+        ["ping", "-c", "3", "-W", "1", ip],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
     )
@@ -11,4 +11,8 @@ def ping(ip):
     else:
         print(ip, "is OFFLINE")
 
-ping("8.8.8.8")
+base = "192.168.1."
+
+for i in range(1, 11):
+    ip = base + str(i)
+    ping(ip)
